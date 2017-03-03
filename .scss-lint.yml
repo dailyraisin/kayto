@@ -1,0 +1,22 @@
+exclude:
+  - '.git/**'
+  - '.sass-cache/**'
+  - 'bower_components/**'
+  - 'node_modules/**'
+  - 'dist/**'
+  - '.tmp/**'
+
+linters:
+  Indentation:
+    width: 4
+  StringQuotes:
+    enabled: true
+    style: single_quotes
+  QualifyingElement:
+    enabled: false
+  SelectorDepth:
+    enabled: true
+    max_depth: 4
+  NestingDepth:
+    enabled: true
+    max_depth: 4
