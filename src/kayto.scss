@@ -1,0 +1,123 @@
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: ' ';
+        display: table;
+    }
+}
+
+/// Kayto control z-index
+///
+/// @type Number
+$kayto-ctrl-z-index: 1200 !default;
+
+/// Kayto overlay z-index
+///
+/// @type Unit
+$kayto-overlay-z-index: $kayto-ctrl-z-index - 100 !default;
+
+/// Kayto control background color
+///
+/// @type Color
+$kayto-bg-color: #474747 !default;
+
+/// Kayto overlay max-width
+///
+/// @type Unit
+$kayto-max-width: 1600px !default;
+
+/// Kayto overlay opacity
+///
+/// @type Number
+$kayto-overlay-opacity: .4 !default;
+
+.kayto {
+    @include clearfix;
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $kayto-max-width;
+    pointer-events: none;
+
+    .kayto-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: $kayto-max-width;
+        opacity: $kayto-overlay-opacity;
+        position: fixed;
+        width: 100%;
+        z-index: $kayto-overlay-z-index;
+
+        > .kayto-column {
+            background-color: #80bde1; //TODO var
+            box-sizing: border-box; //ensure measurements include padding
+            flex: 0 1 auto;
+            float: left;
+            height: 100vh;
+            padding-left: 16px;
+            padding-right: 16px;
+            width: 1/12 * 100%;
+
+            > .kayto-content {
+                background-color: #409bd2;
+                height: 100vh;
+                overflow-x: hidden;
+            }
+        }
+    }
+}
+
+.kayto-ctrl {
+    @include clearfix;
+
+    background-color: $kayto-bg-color;
+    bottom: 16px;
+    cursor: move;
+    font-family: "Helvetica Neue", Helvetica, "Roboto", Arial, sans-serif;
+    font-size: 16px;
+    min-width: 170px;
+    padding: 16px;
+    position: fixed;
+    right: 24px;
+    z-index: $kayto-ctrl-z-index;
+
+    input[type="checkbox"]:hover,
+    .kayto-ctrl-container label:hover {
+        cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+        margin-right: .5em; //TODO from standard variable
+        visibility: visible; //fix for invision hidden
+    }
+
+    input[type="text"] {
+        color: #474747; //TODO var //fix for invision #fff
+        width: 100%;
+    }
+
+    label,
+    .kayto-ctrl-max-width-panel,
+    .kayto-ctrl-current-width-panel {
+        color: #fff; //TODO var
+    }
+
+    .kayto-ctrl-max-width-panel {
+        .kayto-current-max-width-ctrl {
+            color: #fff; //TODO var
+        }
+
+        .kayto-edit-icon {
+            color: #fff; //TODO var
+            margin-left: .5em; //TODO from standard variable
+            position: relative;
+            top: 3px;
+
+            > svg {
+                fill: #fff; //TODO var
+                height: 16px;
+                width: 16px;
+            }
+        }
+    }
+}

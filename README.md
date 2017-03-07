@@ -1,2 +1,2 @@
-# kayto
+# Kayto
 Your UI layout sidekick
