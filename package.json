@@ -15,6 +15,10 @@
   "bugs": {
     "url": "https://github.com/dailyraisin/kayto/issues"
   },
+  "files": [
+    "src/",
+    "dist/"
+  ],
   "homepage": "https://github.com/dailyraisin/kayto#readme",
   "devDependencies": {
     "csso": "^2.3.1",
