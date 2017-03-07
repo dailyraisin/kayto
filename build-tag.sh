@@ -6,8 +6,8 @@ git checkout -b tmp && \
   gulp build && \
   git add -f dist && \
   git commit && \
-  echo -n "\nNow git tag -a vX.X.X\n" && \
-  echo -n "\ngit push origin vX.X.X\n" && \
-  echo -n "\nnpm publish\n" && \
-  echo -n "\ngit checkout master\n" && \
-  echo -n "\ngit branch -D tmp\n"
+  echo -ne "\nNow git tag -a vX.X.X\n" && \
+  echo -ne "\ngit push origin vX.X.X\n" && \
+  echo -ne "\nnpm publish\n" && \
+  echo -ne "\ngit checkout master\n" && \
+  echo -ne "\ngit branch -D tmp\n"
