@@ -13,6 +13,7 @@ import dragNdrop from 'npm-dragndrop';
         maxWidthInputView, containerView, bodyClickFn, currentMaxWidthView, valueView, maxWidthLabelView;
     var doMaxWidthChanged = debounce(onMaxWidthChange, TYPE_DELAY);
     bodyClickFn = null;
+    currentWidthView = null;
 
     var requestAnimFrame = (function () {
         return window.requestAnimationFrame ||
@@ -29,8 +30,13 @@ import dragNdrop from 'npm-dragndrop';
     })();
 
     function render () {
-        var widthPx = window.innerWidth;
-        currentWidthView.textContent = 'Current width: ' + widthPx + ' px';
+        if (currentWidthView === null) {
+            return;
+        }
+        else {
+            var widthPx = window.innerWidth;
+            currentWidthView.textContent = 'Current width: ' + widthPx + ' px';
+        }
     }
 
     function debounce(fn, wait) {
