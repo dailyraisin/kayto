@@ -6,15 +6,32 @@ import dragNdrop from 'npm-dragndrop';
     var defaultMaxWidth = 1600;
     var lastGoodMaxWidth = defaultMaxWidth;
     var columns = 12;
-    var RESIZE_DELAY = 700;
     var TYPE_DELAY = 250;
 
     var checkLabelView, checkInputView, widgetView, iconEditView,
         overlayView, currentWidthView, maxWidthPanelView, toggleOverlayViewFn,
         maxWidthInputView, containerView, bodyClickFn, currentMaxWidthView, valueView, maxWidthLabelView;
-    var doResize = debounce(onResize, RESIZE_DELAY);
     var doMaxWidthChanged = debounce(onMaxWidthChange, TYPE_DELAY);
     bodyClickFn = null;
+
+    var requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function (callback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
+    }());
+
+    (function animloop (){
+        requestAnimFrame(animloop);
+        render();
+    })();
+
+    function render () {
+        var widthPx = window.innerWidth;
+        currentWidthView.textContent = 'Current width: ' + widthPx + ' px';
+    }
 
     function debounce(fn, wait) {
         var timeout;
@@ -28,11 +45,6 @@ import dragNdrop from 'npm-dragndrop';
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
-    }
-
-    function onResize () {
-        var widthPx = window.innerWidth;
-        currentWidthView.textContent = 'Current width: ' + widthPx + ' px';
     }
 
     function applyValueIfValid (vm) {
@@ -127,7 +139,6 @@ import dragNdrop from 'npm-dragndrop';
 
     function ready () {
         buildGridAssistant();
-        onResize();
     }
 
     function buildGridAssistant () {
@@ -242,11 +253,8 @@ import dragNdrop from 'npm-dragndrop';
         if (bodyClickFn !== null) {
             stopListeningBodyClick();
         }
-
-        window.removeEventListener('resize', doResize);
     }
 
     document.addEventListener('DOMContentLoaded', ready);
-    window.addEventListener('resize', doResize);
     window.addEventListener('unload', unload);
 }(window, document, dragNdrop));
