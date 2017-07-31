@@ -24,12 +24,17 @@ $kayto-bg-color: #474747 !default;
 /// Kayto overlay max-width
 ///
 /// @type Unit
-$kayto-max-width: 1600px !default;
+$kayto-max-width: 1488px !default;
 
 /// Kayto overlay opacity
 ///
 /// @type Number
 $kayto-overlay-opacity: .4 !default;
+
+/// Kayto Gutter
+///
+/// @type Unit
+$kayto-grid-gutter: 8px !default;
 
 .kayto {
     @include clearfix;
@@ -54,8 +59,8 @@ $kayto-overlay-opacity: .4 !default;
             flex: 0 1 auto;
             float: left;
             height: 100vh;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: $kayto-grid-gutter;
+            padding-right: $kayto-grid-gutter;
             width: 1/12 * 100%;
 
             > .kayto-content {
