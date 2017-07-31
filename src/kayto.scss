@@ -31,10 +31,27 @@ $kayto-max-width: 1488px !default;
 /// @type Number
 $kayto-overlay-opacity: .4 !default;
 
+/// Kayto control opacity
+///
+/// @type Number
+$kayto-ctrl-opacity: .5 !default;
+
 /// Kayto Gutter
 ///
 /// @type Unit
 $kayto-grid-gutter: 8px !default;
+
+/// Kayto column background color
+///
+/// @type Color
+$kayto-column-color: #80bde1 !default;
+
+/// Kayto content background color
+///
+/// @type Color
+$kayto-content-color: #409bd2 !default;
+
+$white: #fff;
 
 .kayto {
     @include clearfix;
@@ -54,7 +71,7 @@ $kayto-grid-gutter: 8px !default;
         z-index: $kayto-overlay-z-index;
 
         > .kayto-column {
-            background-color: #80bde1; //TODO var
+            background-color: $kayto-column-color;
             box-sizing: border-box; //ensure measurements include padding
             flex: 0 1 auto;
             float: left;
@@ -64,7 +81,7 @@ $kayto-grid-gutter: 8px !default;
             width: 1/12 * 100%;
 
             > .kayto-content {
-                background-color: #409bd2;
+                background-color: $kayto-content-color;
                 height: 100vh;
                 overflow-x: hidden;
             }
@@ -81,10 +98,15 @@ $kayto-grid-gutter: 8px !default;
     font-family: "Helvetica Neue", Helvetica, "Roboto", Arial, sans-serif;
     font-size: 16px;
     min-width: 170px;
+    opacity: $kayto-ctrl-opacity;
     padding: 16px;
     position: fixed;
     right: 24px;
     z-index: $kayto-ctrl-z-index;
+
+    &:hover {
+        opacity: 1;
+    }
 
     input[type="checkbox"]:hover,
     .kayto-ctrl-container label:hover {
@@ -97,29 +119,29 @@ $kayto-grid-gutter: 8px !default;
     }
 
     input[type="text"] {
-        color: #474747; //TODO var //fix for invision #fff
+        color: $kayto-bg-color;
         width: 100%;
     }
 
     label,
     .kayto-ctrl-max-width-panel,
     .kayto-ctrl-current-width-panel {
-        color: #fff; //TODO var
+        color: $white;
     }
 
     .kayto-ctrl-max-width-panel {
         .kayto-current-max-width-ctrl {
-            color: #fff; //TODO var
+            color: $white;
         }
 
         .kayto-edit-icon {
-            color: #fff; //TODO var
+            color: $white;
             margin-left: .5em; //TODO from standard variable
             position: relative;
             top: 3px;
 
             > svg {
-                fill: #fff; //TODO var
+                fill: $white;
                 height: 16px;
                 width: 16px;
             }
