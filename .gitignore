@@ -9,7 +9,6 @@ scssReport.xml
 
 # temporary and build
 .tmp/
-dist/
 
 # logs
 log/
@@ -34,7 +33,8 @@ pids
 ._.Trashes
 ._.
 .Spotlight-V100
-Icon
+Icon
+
 
 # windows
 [Tt]humbs.db
