@@ -1,6 +1,6 @@
 {
   "name": "kayto",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Your UI layout sidekick",
   "main": "dist/kayto.js",
   "scripts": {

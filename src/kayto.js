@@ -3,7 +3,7 @@ import dragNdrop from 'npm-dragndrop';
 (function (window, document, dragNdrop) {
     'use strict';
 
-    var defaultMaxWidth = window.kaytoMaxWidth || 1488;
+    var defaultMaxWidth = window.kaytoMaxWidth || 1440;
     var lastGoodMaxWidth = defaultMaxWidth;
     var columns = window.kaytoColumns || 12;
     var TYPE_DELAY = 250;
